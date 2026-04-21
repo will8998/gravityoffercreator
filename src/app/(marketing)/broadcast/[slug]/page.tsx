@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BroadcastHero } from "@/components/broadcast/hero";
+import { SocialProof } from "@/components/broadcast/social-proof";
 import { WhyItWorks } from "@/components/broadcast/why-it-works";
 import { Pipeline } from "@/components/broadcast/pipeline";
 import { Effort } from "@/components/broadcast/effort";
 import { Multichannel } from "@/components/broadcast/multichannel";
 import { Samples } from "@/components/broadcast/samples";
 import { Pricing } from "@/components/broadcast/pricing";
+import { FAQ } from "@/components/broadcast/faq";
 import { CTA } from "@/components/broadcast/cta";
 import { LeadPlayer } from "@/components/broadcast/player";
 import { getAllLeadSlugs, getLead } from "@/lib/leads";
@@ -55,16 +57,18 @@ export default async function LeadPitchPage({
 
       <PersonalSection lead={lead} />
 
+      <SocialProof />
       <WhyItWorks />
-      <Pipeline />
       <Effort />
+      <Pipeline />
       <Multichannel />
       <Samples highlightSlug={lead.slug} />
       <Pricing leadCta={mailto} />
+      <FAQ />
       <CTA
         mailto={mailto}
-        headline={`${lead.firstName}, claim your free pilot.`}
-        sub={`We've already picked you. One reply kicks off the 7-day build. If the first episode doesn't sound like you, you keep it anyway and we walk.`}
+        headline={`${lead.firstName}, reply. Get a podcast.`}
+        sub={`One email. Seven days later your first episode is live. Free. Yours to keep either way.`}
       />
     </main>
   );
@@ -76,26 +80,26 @@ function PersonalSection({
   lead: NonNullable<ReturnType<typeof getLead>>;
 }) {
   return (
-    <section className="relative py-32 px-5 border-t border-white/5">
+    <section className="relative py-24 px-5 border-t border-white/5">
       <div className="max-w-4xl mx-auto">
         <div className="text-[11px] uppercase tracking-[0.22em] text-[#e8b24a] mb-6">
           For {lead.firstName} · {lead.project}
         </div>
 
-        <h2 className="font-[family-name:var(--font-clash-display)] text-4xl sm:text-5xl md:text-6xl font-semibold text-white leading-[1.05] mb-10">
+        <h2 className="font-[family-name:var(--font-clash-display)] text-4xl sm:text-5xl md:text-6xl font-semibold text-white leading-[1.05] mb-8">
           {lead.hook}
         </h2>
 
-        <div className="space-y-6 text-white/70 leading-relaxed text-base md:text-lg max-w-3xl">
+        <div className="space-y-5 text-white/70 leading-relaxed text-base md:text-lg max-w-3xl">
           <p>{lead.fundingNote}</p>
           <p>{lead.observation}</p>
         </div>
 
-        <div className="mt-14">
+        <div className="mt-12">
           <LeadPlayer lead={lead} />
         </div>
 
-        <div className="mt-10 flex flex-wrap gap-3 text-xs">
+        <div className="mt-8 flex flex-wrap gap-3 text-xs">
           {lead.sources.map((s) => (
             <a
               key={s.url}
