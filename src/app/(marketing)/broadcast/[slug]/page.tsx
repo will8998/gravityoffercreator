@@ -46,7 +46,7 @@ export default async function LeadPitchPage({
   const mailto = `mailto:hello@gravitylabs.xyz?subject=${encodeURIComponent(
     `Gravity Broadcast × ${lead.project}`
   )}&body=${encodeURIComponent(
-    `Hi ${lead.firstName},\n\nI'd like to claim the free Gravity Broadcast pilot for ${lead.project}. When's a good 15 minutes?\n\n— ${lead.firstName}`
+    `Hi ${lead.firstName},\n\nI'd like to reserve the $497 refundable Gravity Broadcast pilot for ${lead.project}. When's a good 15 minutes?\n\n— ${lead.firstName}`
   )}`;
 
   return (
@@ -72,7 +72,7 @@ export default async function LeadPitchPage({
       <CTA
         mailto={mailto}
         headline={`${lead.firstName}, reply. Get a podcast.`}
-        sub={`One email. Seven days later your first episode is live. Free. Yours to keep either way.`}
+        sub={`15-min intake, $497 refundable pilot. Seven days later your first episode is live. If the Cofounder Test fails, full refund and the clone is deleted.`}
       />
     </main>
   );

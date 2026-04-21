@@ -14,9 +14,9 @@ import { FAQ } from "@/components/broadcast/faq";
 import { CTA } from "@/components/broadcast/cta";
 
 export const metadata: Metadata = {
-  title: "Gravity Broadcast — 5 min in. 20 assets out. Every week.",
+  title: "Gravity Broadcast — Your voice. Your takes. Your podcast.",
   description:
-    "Free pilot for 10 Web3 founders. Your cloned voice becomes a daily podcast + thread + Shorts + LinkedIn post across 6 channels. $997/mo — one-fifth of ContentGhost, 20x the output.",
+    "$497 refundable pilot for Web3 founders. Your cloned voice becomes a MWF fireside + thread + Short + LinkedIn post across 5 channels. $997/mo after — one-fifth of ContentGhost. Cofounder Test guarantee.",
 };
 
 export default function BroadcastPage() {

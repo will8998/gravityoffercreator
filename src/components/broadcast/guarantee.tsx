@@ -26,14 +26,15 @@ export function Guarantee() {
             The anti-slop guarantee
           </div>
           <h2 className="font-[family-name:var(--font-clash-display)] text-4xl sm:text-5xl md:text-6xl font-semibold text-white leading-[1.02]">
-            We never generate content.
+            Every line traces back
             <br />
-            <span className="text-[#e8b24a]">We recompose yours.</span>
+            <span className="text-[#e8b24a]">to something you already said.</span>
           </h2>
           <p className="mt-8 text-white/70 text-lg leading-relaxed max-w-2xl">
-            Every episode is cited back to something you&apos;ve already said.
-            Your voice is the source — we&apos;re the pipeline. Slop-proof by
-            construction, not by marketing.
+            Your past tweets, whitepapers and interviews are the source. Orbit
+            asks the follow-ups. Human editors reject anything that can&apos;t
+            cite you. Slop-proof by construction, not marketing. And we prove
+            it with the <span className="text-white">Cofounder Test</span>.
           </p>
         </div>
 
@@ -54,6 +55,26 @@ export function Guarantee() {
               </p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-12 rounded-2xl border border-[#e8b24a]/20 bg-[#e8b24a]/[0.04] p-8 md:p-10">
+          <div className="text-[11px] uppercase tracking-[0.22em] text-[#e8b24a] mb-4">
+            The Cofounder Test
+          </div>
+          <h3 className="font-[family-name:var(--font-clash-display)] text-2xl md:text-3xl text-white font-semibold leading-tight mb-4">
+            3 blind listeners. You approve, or we refund.
+          </h3>
+          <p className="text-white/70 leading-relaxed text-sm md:text-base max-w-3xl">
+            Before we bill anything, we send a 30-second A/B clip to 3
+            podcast-listeners who don&apos;t know you. Half the clip is your
+            real voice, half is the clone, cut together. If 2 of 3 correctly
+            identify the clone, we don&apos;t bill. Your $497 pilot fee is
+            refunded in full. You keep the files. The clone is deleted.
+            That&apos;s the whole guarantee.
+          </p>
+          <p className="text-white/50 text-xs md:text-sm mt-4">
+            Optional: name your own 3 contacts instead of ours.
+          </p>
         </div>
 
         <div className="mt-10 flex flex-wrap gap-3 text-xs">

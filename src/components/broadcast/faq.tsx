@@ -5,11 +5,15 @@ const faqs = [
   },
   {
     q: "What if it doesn't sound like me?",
-    a: "You reject the episode in Telegram with one message. We rebuild it. If the pilot doesn't sound like you, we walk away and you keep the files. No arguments.",
+    a: "We run the Cofounder Test. Before billing starts, we send a 30-second blind A/B clip to 3 podcast-listeners (ours by default, or 3 people you name). If 2 of 3 correctly identify the clone, your $497 pilot is refunded in full, the clone is deleted, and you keep the files. No arguments.",
+  },
+  {
+    q: "Why is the pilot paid?",
+    a: "Because free pilots only work for agencies with runway to absorb the loss. We're a small operation and $497 covers production costs. It's 100% refundable if the Cofounder Test fails, and credits toward your first month if it passes. You never pay more than $997 total for month 1.",
   },
   {
     q: "Do I have to record new voice notes every week?",
-    a: "No. After the one-time 10-min voice sample, we source ongoing content from your past writing and the week's news. You spend 5 minutes reviewing. That's the whole job.",
+    a: "No. After the one-time 10-min voice sample, we source ongoing content from your past writing and the week's news. You spend 5 minutes reviewing each MWF batch. That's the whole job.",
   },
   {
     q: "Is voice cloning legal / ethical?",

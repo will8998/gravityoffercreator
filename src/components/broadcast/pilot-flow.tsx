@@ -2,7 +2,7 @@ const steps = [
   {
     num: "Day 0",
     title: "Reply.",
-    desc: "15-min call. Voice sample from your phone. Sign consent. Done.",
+    desc: "15-min call. Sign consent. Pay $497 via Stripe — refundable if the Cofounder Test fails.",
   },
   {
     num: "Day 1–2",
@@ -16,8 +16,8 @@ const steps = [
   },
   {
     num: "Day 7",
-    title: "Live.",
-    desc: "Spotify, Apple, YouTube, X. You publish. We never touch your handles.",
+    title: "Live + Cofounder Test.",
+    desc: "Live on 5 channels. Blind A/B clip goes to 3 listeners. They decide.",
   },
 ];
 
@@ -27,16 +27,17 @@ export function PilotFlow() {
       <div className="max-w-6xl mx-auto">
         <div className="mb-14 max-w-3xl">
           <div className="text-[11px] uppercase tracking-[0.22em] text-[#e8b24a] mb-4">
-            Free pilot · 7 days · No credit card
+            Paid pilot · 7 days · 100% refundable
           </div>
           <h2 className="font-[family-name:var(--font-clash-display)] text-4xl sm:text-5xl md:text-6xl font-semibold text-white leading-[1.05]">
-            Your first episode.
+            $497 commits.
             <br />
-            <span className="text-white/40">On us. Yours to keep.</span>
+            <span className="text-white/40">Refunds if it misses.</span>
           </h2>
           <p className="mt-6 text-white/65 text-base md:text-lg max-w-xl leading-relaxed">
-            We only pilot for founders we&apos;ve handpicked. See the full
-            product before you spend a dollar.
+            The $497 covers production. If 3 blind listeners can tell it&apos;s the
+            clone, we refund everything and delete the voice model. If they can&apos;t,
+            $497 credits toward month 1.
           </p>
         </div>
 
@@ -63,7 +64,7 @@ export function PilotFlow() {
         <div className="mt-10 flex flex-wrap gap-3 text-xs">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1.5 text-white/60">
             <span className="h-1 w-1 rounded-full bg-[#e8b24a]" />
-            No credit card
+            Stripe refund if test fails
           </span>
           <span className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1.5 text-white/60">
             <span className="h-1 w-1 rounded-full bg-[#e8b24a]" />
@@ -71,7 +72,7 @@ export function PilotFlow() {
           </span>
           <span className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1.5 text-white/60">
             <span className="h-1 w-1 rounded-full bg-[#e8b24a]" />
-            Walk away with the files
+            $497 credits to month 1 if test passes
           </span>
         </div>
       </div>

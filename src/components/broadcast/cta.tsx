@@ -7,7 +7,7 @@ type CtaProps = {
 export function CTA({
   mailto = "mailto:hello@gravitylabs.xyz?subject=Gravity%20Broadcast%20Pilot",
   headline = "Reply. Get a podcast.",
-  sub = "One email. Seven days later you have a daily-podcast-quality episode live in your voice. Free. No credit card. If you hate it, keep the files and walk.",
+  sub = "15-min intake, $497 refundable pilot. 7 days later your episode is live. If the Cofounder Test fails, full refund and the clone is deleted.",
 }: CtaProps) {
   return (
     <section className="relative py-32 px-5 border-t border-white/5 overflow-hidden">
@@ -16,7 +16,7 @@ export function CTA({
         <div className="inline-flex items-center gap-2 rounded-full border border-[#e8b24a]/30 bg-[#e8b24a]/[0.08] px-4 py-1.5 backdrop-blur mb-8">
           <span className="h-1.5 w-1.5 rounded-full bg-[#e8b24a] animate-pulse" />
           <span className="text-[11px] uppercase tracking-[0.22em] text-[#e8b24a]">
-            5 pilots per month · 3 already claimed
+            3 pilot slots · April 2026
           </span>
         </div>
 
@@ -30,7 +30,7 @@ export function CTA({
             href={mailto}
             className="group inline-flex items-center justify-center rounded-full bg-[#e8b24a] px-10 py-4 text-base font-semibold text-black transition hover:bg-[#f5d48a] shadow-[0_0_40px_rgba(232,178,74,0.3)]"
           >
-            Claim my free episode
+            Reserve my pilot slot — $497
             <span className="ml-2 transition group-hover:translate-x-1">→</span>
           </a>
           <a
@@ -46,11 +46,11 @@ export function CTA({
         <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.22em] text-white/40">
           <span className="flex items-center gap-2">
             <span className="h-1 w-1 rounded-full bg-[#e8b24a]" />
-            Free
+            Refundable
           </span>
           <span className="flex items-center gap-2">
             <span className="h-1 w-1 rounded-full bg-[#e8b24a]" />
-            No card
+            Credits to month 1
           </span>
           <span className="flex items-center gap-2">
             <span className="h-1 w-1 rounded-full bg-[#e8b24a]" />

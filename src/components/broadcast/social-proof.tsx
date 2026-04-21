@@ -4,7 +4,7 @@ const platforms = [
   "YouTube",
   "X",
   "LinkedIn",
-  "TikTok",
+  "Telegram",
 ];
 
 export function SocialProof() {

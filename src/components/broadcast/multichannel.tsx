@@ -21,13 +21,6 @@ const channels = [
     icon: "𝕏",
   },
   {
-    name: "TikTok / Reels / Shorts",
-    format: "Vertical audiogram",
-    length: "45–60 sec",
-    why: "Highest-velocity algorithm surface for cold attention. 3 cuts per episode.",
-    icon: "▲",
-  },
-  {
     name: "LinkedIn",
     format: "Post + audio",
     length: "Hook + 3 beats",
@@ -49,12 +42,12 @@ export function Multichannel() {
       <div className="max-w-6xl mx-auto">
         <div className="mb-16 max-w-3xl">
           <div className="text-[11px] uppercase tracking-[0.22em] text-[#e8b24a] mb-4">
-            Distribution · 6 channels
+            Distribution · 5 channels
           </div>
           <h2 className="font-[family-name:var(--font-clash-display)] text-4xl sm:text-5xl md:text-6xl font-semibold text-white leading-[1.05]">
             One fireside.
             <br />
-            <span className="text-white/40">Six channels.</span>
+            <span className="text-white/40">Five channels.</span>
           </h2>
           <p className="mt-8 text-white/65 text-lg max-w-2xl leading-relaxed">
             Every episode is produced once and published everywhere your
@@ -87,7 +80,7 @@ export function Multichannel() {
         </div>
 
         <div className="mt-12 text-center text-[11px] uppercase tracking-[0.22em] text-white/40">
-          1 voice note in · 1 fireside · 6 platforms · ~20 assets per week
+          1 voice note in · 1 fireside · 5 platforms · ~15 assets per week
         </div>
       </div>
     </section>

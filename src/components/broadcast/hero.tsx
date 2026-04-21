@@ -24,7 +24,7 @@ export function BroadcastHero({ eyebrow, leadBadge, pilotCta }: HeroProps) {
           <div className="inline-flex items-center gap-2 rounded-full border border-[#e8b24a]/30 bg-[#e8b24a]/[0.08] px-4 py-1.5 backdrop-blur">
             <span className="h-1.5 w-1.5 rounded-full bg-[#e8b24a] animate-pulse" />
             <span className="text-[11px] uppercase tracking-[0.22em] text-[#e8b24a]">
-              {eyebrow ?? "5 pilot slots open this month"}
+              {eyebrow ?? "3 pilot slots · April 2026"}
             </span>
           </div>
 
@@ -38,28 +38,26 @@ export function BroadcastHero({ eyebrow, leadBadge, pilotCta }: HeroProps) {
         </div>
 
         <h1 className="font-[family-name:var(--font-clash-display)] font-bold text-white leading-[0.95] text-5xl sm:text-6xl md:text-7xl lg:text-[104px] tracking-tight">
-          5 minutes in.
+          Your voice.
           <br />
-          <span className="text-[#e8b24a]">20 assets out.</span>
+          <span className="text-[#e8b24a]">Your takes.</span>
           <br />
-          Every week.
+          Your podcast.
         </h1>
 
         <p className="mt-8 max-w-xl mx-auto text-base sm:text-lg text-white/75 leading-relaxed">
-          Your cloned voice becomes a daily podcast on Spotify, Apple, YouTube
-          and X. <span className="text-white font-medium">$997/mo</span> — one-fifth of
-          ContentGhost, twenty-times the output.{" "}
-          <span className="text-white font-medium">First episode free.</span>
+          Your cloned voice becomes a Mon/Wed/Fri fireside on Spotify, Apple,
+          YouTube, X and LinkedIn. <span className="text-white font-medium">$497 refundable pilot</span> — if it doesn&apos;t pass the Cofounder Test, you pay nothing and keep the files.
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.22em] text-white/60">
           <span className="flex items-center gap-2">
             <span className="h-1 w-1 rounded-full bg-[#e8b24a]" />
-            Zero effort
+            5 min / week
           </span>
           <span className="flex items-center gap-2">
             <span className="h-1 w-1 rounded-full bg-[#e8b24a]" />
-            Daily presence
+            Cofounder Test guarantee
           </span>
           <span className="flex items-center gap-2">
             <span className="h-1 w-1 rounded-full bg-[#e8b24a]" />
@@ -67,7 +65,7 @@ export function BroadcastHero({ eyebrow, leadBadge, pilotCta }: HeroProps) {
           </span>
           <span className="flex items-center gap-2">
             <span className="h-1 w-1 rounded-full bg-[#e8b24a]" />
-            Slop-proof
+            100% refundable
           </span>
         </div>
 
@@ -76,7 +74,7 @@ export function BroadcastHero({ eyebrow, leadBadge, pilotCta }: HeroProps) {
             href={pilotCta ?? "#pilot"}
             className="group inline-flex items-center justify-center rounded-full bg-[#e8b24a] px-10 py-4 text-base font-semibold text-black transition hover:bg-[#f5d48a] shadow-[0_0_40px_rgba(232,178,74,0.3)]"
           >
-            Claim your free episode
+            Reserve my pilot slot — $497
             <span className="ml-2 transition group-hover:translate-x-1">→</span>
           </Link>
           <Link
@@ -89,8 +87,8 @@ export function BroadcastHero({ eyebrow, leadBadge, pilotCta }: HeroProps) {
 
         <div className="mt-20 grid grid-cols-3 gap-6 max-w-2xl mx-auto border-t border-white/5 pt-8">
           <Stat value="5 min" label="Of your time / week" />
-          <Stat value="20" label="Assets published / week" />
-          <Stat value="6" label="Channels, always on" />
+          <Stat value="~15" label="Assets published / week" />
+          <Stat value="5" label="Channels, always on" />
         </div>
       </div>
 

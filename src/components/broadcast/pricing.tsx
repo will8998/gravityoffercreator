@@ -1,15 +1,15 @@
-const freeFeatures = [
+const pilotFeatures = [
   "1 full fireside episode (you + Orbit)",
   "Thread + vertical Short + LinkedIn post",
   "Branded cover art + show setup",
   "Live on Spotify, Apple, YouTube in 7 days",
-  "You keep everything, even if you walk",
-  "No credit card. Ever.",
+  "Cofounder Test: 3 blind listeners must agree it sounds like you",
+  "Fails the test? Full refund. You keep the files.",
 ];
 
 const paidFeatures = [
   "3 fireside episodes / week (Mon · Wed · Fri)",
-  "Published to all 6 channels",
+  "Published to all 5 channels",
   "Orbit AI producer asks the follow-ups",
   "Sourced from your past content + this week's news",
   "Weekly 3-min Loom review (that's it)",
@@ -32,9 +32,9 @@ export function Pricing({ leadCta }: PricingProps) {
             Pricing
           </div>
           <h2 className="font-[family-name:var(--font-clash-display)] text-4xl sm:text-5xl md:text-6xl font-semibold text-white leading-[1.05]">
-            Free to start.
+            $497 refundable pilot.
             <br />
-            <span className="text-white/40">$997/mo when you&apos;re hooked.</span>
+            <span className="text-white/40">$500 for month 1 when it passes.</span>
           </h2>
         </div>
 
@@ -45,16 +45,16 @@ export function Pricing({ leadCta }: PricingProps) {
             </div>
             <div className="flex items-baseline gap-2 mb-3">
               <span className="font-[family-name:var(--font-clash-display)] text-6xl md:text-7xl text-white font-semibold">
-                Free
+                $497
               </span>
-              <span className="text-white/40 text-xs">once · 7 days</span>
+              <span className="text-white/40 text-xs">refundable · 7 days</span>
             </div>
             <p className="text-white/60 text-sm leading-relaxed mb-8">
-              One episode. Fully produced. You keep it.
+              One episode. Fully produced. Refunded in full if the Cofounder Test fails.
             </p>
 
             <ul className="space-y-3 mb-10 flex-1">
-              {freeFeatures.map((f) => (
+              {pilotFeatures.map((f) => (
                 <li
                   key={f}
                   className="flex gap-3 text-sm text-white/80 leading-relaxed"
@@ -69,7 +69,7 @@ export function Pricing({ leadCta }: PricingProps) {
               href={mailto}
               className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3.5 text-sm font-medium text-white transition hover:bg-white/[0.08]"
             >
-              Claim free pilot
+              Reserve pilot slot
               <span className="ml-2">→</span>
             </a>
           </div>
@@ -89,7 +89,7 @@ export function Pricing({ leadCta }: PricingProps) {
               <span className="text-white/50 text-sm">/ month</span>
             </div>
             <p className="text-white/70 text-sm leading-relaxed mb-8">
-              Daily presence. 5 min/wk of your time. Cancel anytime.
+              Month 1 bills $500 (your $497 pilot credits). MWF cadence. 5 min/wk of your time. Cancel anytime.
             </p>
 
             <ul className="space-y-3 mb-10 flex-1">
