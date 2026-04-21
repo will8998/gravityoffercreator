@@ -2,11 +2,23 @@ import { db } from "./index";
 import { sql } from "drizzle-orm";
 
 let migrated = false;
+let inFlight: Promise<void> | null = null;
 
 export async function runMigrations() {
   if (migrated) return;
-  migrated = true;
+  if (inFlight) return inFlight;
+  inFlight = (async () => {
+    try {
+      await migrateInner();
+      migrated = true;
+    } finally {
+      inFlight = null;
+    }
+  })();
+  return inFlight;
+}
 
+async function migrateInner() {
   await db.run(sql`CREATE TABLE IF NOT EXISTS offers (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
@@ -51,16 +63,13 @@ export async function runMigrations() {
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     lead_slug TEXT NOT NULL,
     status TEXT NOT NULL,
-    stripe_checkout_id TEXT,
+    stripe_checkout_id TEXT UNIQUE,
     stripe_charge_id TEXT,
     created_at INTEGER NOT NULL,
     updated_at INTEGER NOT NULL
   )`);
   await db.run(
     sql`CREATE INDEX IF NOT EXISTS idx_pilots_slug ON pilots(lead_slug)`
-  );
-  await db.run(
-    sql`CREATE INDEX IF NOT EXISTS idx_pilots_stripe ON pilots(stripe_checkout_id)`
   );
 
   await db.run(sql`CREATE TABLE IF NOT EXISTS vua_signings (
@@ -69,13 +78,14 @@ export async function runMigrations() {
     signer_name TEXT NOT NULL,
     signer_email TEXT NOT NULL,
     terms_version TEXT NOT NULL,
+    terms_content_hash TEXT NOT NULL,
     ip_hash TEXT NOT NULL,
     ua_hash TEXT NOT NULL,
     signed_at INTEGER NOT NULL,
     audit_hash TEXT NOT NULL
   )`);
   await db.run(
-    sql`CREATE UNIQUE INDEX IF NOT EXISTS idx_vua_pilot ON vua_signings(pilot_id)`
+    sql`CREATE UNIQUE INDEX IF NOT EXISTS idx_vua_pilot_version ON vua_signings(pilot_id, terms_version)`
   );
 
   await db.run(sql`CREATE TABLE IF NOT EXISTS cofounder_tests (
@@ -95,6 +105,9 @@ export async function runMigrations() {
     correct INTEGER,
     submitted_at INTEGER
   )`);
+  await db.run(
+    sql`CREATE UNIQUE INDEX IF NOT EXISTS idx_cofounder_test_voter ON cofounder_test_results(test_id, tester_email)`
+  );
 
   await db.run(sql`CREATE TABLE IF NOT EXISTS stripe_events (
     event_id TEXT PRIMARY KEY,

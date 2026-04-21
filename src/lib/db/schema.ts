@@ -40,7 +40,9 @@ export const leadTokens = sqliteTable("lead_tokens", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   leadSlug: text("lead_slug").notNull(),
   tokenHash: text("token_hash").notNull().unique(),
-  issuedAt: integer("issued_at").notNull(),
+  issuedAt: integer("issued_at")
+    .notNull()
+    .$defaultFn(() => Date.now()),
   expiresAt: integer("expires_at").notNull(),
   revokedAt: integer("revoked_at"),
 });
@@ -62,10 +64,14 @@ export const pilots = sqliteTable("pilots", {
       "churned",
     ],
   }).notNull(),
-  stripeCheckoutId: text("stripe_checkout_id"),
+  stripeCheckoutId: text("stripe_checkout_id").unique(),
   stripeChargeId: text("stripe_charge_id"),
-  createdAt: integer("created_at").notNull(),
-  updatedAt: integer("updated_at").notNull(),
+  createdAt: integer("created_at")
+    .notNull()
+    .$defaultFn(() => Date.now()),
+  updatedAt: integer("updated_at")
+    .notNull()
+    .$defaultFn(() => Date.now()),
 });
 
 export const vuaSignings = sqliteTable("vua_signings", {
@@ -76,9 +82,12 @@ export const vuaSignings = sqliteTable("vua_signings", {
   signerName: text("signer_name").notNull(),
   signerEmail: text("signer_email").notNull(),
   termsVersion: text("terms_version").notNull(),
+  termsContentHash: text("terms_content_hash").notNull(),
   ipHash: text("ip_hash").notNull(),
   uaHash: text("ua_hash").notNull(),
-  signedAt: integer("signed_at").notNull(),
+  signedAt: integer("signed_at")
+    .notNull()
+    .$defaultFn(() => Date.now()),
   auditHash: text("audit_hash").notNull(),
 });
 
@@ -106,7 +115,9 @@ export const cofounderTestResults = sqliteTable("cofounder_test_results", {
 
 export const stripeEvents = sqliteTable("stripe_events", {
   eventId: text("event_id").primaryKey(),
-  receivedAt: integer("received_at").notNull(),
+  receivedAt: integer("received_at")
+    .notNull()
+    .$defaultFn(() => Date.now()),
 });
 
 export const funnelEvents = sqliteTable("funnel_events", {
@@ -129,7 +140,9 @@ export const funnelEvents = sqliteTable("funnel_events", {
     ],
   }).notNull(),
   dataJson: text("data_json"),
-  ts: integer("ts").notNull(),
+  ts: integer("ts")
+    .notNull()
+    .$defaultFn(() => Date.now()),
 });
 
 export type Offer = typeof offers.$inferSelect;

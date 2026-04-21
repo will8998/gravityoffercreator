@@ -4,16 +4,25 @@ import { offers } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { runMigrations } from "@/lib/db/migrate";
 
+function parseOfferId(raw: string): number | null {
+  if (!/^\d+$/.test(raw)) return null;
+  const n = Number(raw);
+  return Number.isInteger(n) && n > 0 ? n : null;
+}
+
 export async function GET(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   await runMigrations();
   const { id } = await params;
+  const offerId = parseOfferId(id);
+  if (offerId === null)
+    return NextResponse.json({ error: "Invalid id" }, { status: 400 });
   const [offer] = await db
     .select()
     .from(offers)
-    .where(eq(offers.id, parseInt(id)));
+    .where(eq(offers.id, offerId));
   if (!offer) return NextResponse.json({ error: "Not found" }, { status: 404 });
   return NextResponse.json(offer);
 }
@@ -24,6 +33,9 @@ export async function PUT(
 ) {
   await runMigrations();
   const { id } = await params;
+  const offerId = parseOfferId(id);
+  if (offerId === null)
+    return NextResponse.json({ error: "Invalid id" }, { status: 400 });
   const body = await request.json();
 
   const updateData: Record<string, unknown> = {
@@ -66,7 +78,7 @@ export async function PUT(
   const [updated] = await db
     .update(offers)
     .set(updateData)
-    .where(eq(offers.id, parseInt(id)))
+    .where(eq(offers.id, offerId))
     .returning();
 
   if (!updated)
@@ -80,6 +92,9 @@ export async function DELETE(
 ) {
   await runMigrations();
   const { id } = await params;
-  await db.delete(offers).where(eq(offers.id, parseInt(id)));
+  const offerId = parseOfferId(id);
+  if (offerId === null)
+    return NextResponse.json({ error: "Invalid id" }, { status: 400 });
+  await db.delete(offers).where(eq(offers.id, offerId));
   return NextResponse.json({ success: true });
 }
