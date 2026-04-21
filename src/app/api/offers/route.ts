@@ -4,16 +4,19 @@ import { offers } from "@/lib/db/schema";
 import { runMigrations } from "@/lib/db/migrate";
 import { desc } from "drizzle-orm";
 
-runMigrations();
-
 export async function GET() {
-  const allOffers = db.select().from(offers).orderBy(desc(offers.createdAt)).all();
+  await runMigrations();
+  const allOffers = await db
+    .select()
+    .from(offers)
+    .orderBy(desc(offers.createdAt));
   return NextResponse.json(allOffers);
 }
 
 export async function POST(request: Request) {
+  await runMigrations();
   const body = await request.json();
-  const newOffer = db
+  const [newOffer] = await db
     .insert(offers)
     .values({
       title: body.title || "Untitled Offer",
@@ -34,7 +37,6 @@ export async function POST(request: Request) {
       pricing: body.pricing ? JSON.stringify(body.pricing) : null,
       currentStep: body.currentStep || 1,
     })
-    .returning()
-    .get();
+    .returning();
   return NextResponse.json(newOffer, { status: 201 });
 }

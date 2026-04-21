@@ -3,8 +3,9 @@ import { defineConfig } from "drizzle-kit";
 export default defineConfig({
   schema: "./src/lib/db/schema.ts",
   out: "./drizzle",
-  dialect: "sqlite",
+  dialect: "turso",
   dbCredentials: {
-    url: "./gravity.db",
+    url: process.env.DATABASE_URL ?? "file:gravity.db",
+    authToken: process.env.DATABASE_AUTH_TOKEN,
   },
 });

@@ -1,11 +1,10 @@
-import Database from "better-sqlite3";
-import { drizzle } from "drizzle-orm/better-sqlite3";
+import { createClient } from "@libsql/client";
+import { drizzle } from "drizzle-orm/libsql";
 import * as schema from "./schema";
-import path from "path";
 
-const dbPath = path.join(process.cwd(), "gravity.db");
-const sqlite = new Database(dbPath);
+const url = process.env.DATABASE_URL ?? "file:gravity.db";
+const authToken = process.env.DATABASE_AUTH_TOKEN;
 
-sqlite.pragma("journal_mode = WAL");
+const client = createClient({ url, authToken });
 
-export const db = drizzle(sqlite, { schema });
+export const db = drizzle(client, { schema });

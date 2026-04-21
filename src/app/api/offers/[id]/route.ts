@@ -4,18 +4,16 @@ import { offers } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { runMigrations } from "@/lib/db/migrate";
 
-runMigrations();
-
 export async function GET(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  await runMigrations();
   const { id } = await params;
-  const offer = db
+  const [offer] = await db
     .select()
     .from(offers)
-    .where(eq(offers.id, parseInt(id)))
-    .get();
+    .where(eq(offers.id, parseInt(id)));
   if (!offer) return NextResponse.json({ error: "Not found" }, { status: 404 });
   return NextResponse.json(offer);
 }
@@ -24,6 +22,7 @@ export async function PUT(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  await runMigrations();
   const { id } = await params;
   const body = await request.json();
 
@@ -64,12 +63,11 @@ export async function PUT(
     }
   }
 
-  const updated = db
+  const [updated] = await db
     .update(offers)
     .set(updateData)
     .where(eq(offers.id, parseInt(id)))
-    .returning()
-    .get();
+    .returning();
 
   if (!updated)
     return NextResponse.json({ error: "Not found" }, { status: 404 });
@@ -80,9 +78,8 @@ export async function DELETE(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  await runMigrations();
   const { id } = await params;
-  db.delete(offers)
-    .where(eq(offers.id, parseInt(id)))
-    .run();
+  await db.delete(offers).where(eq(offers.id, parseInt(id)));
   return NextResponse.json({ success: true });
 }
