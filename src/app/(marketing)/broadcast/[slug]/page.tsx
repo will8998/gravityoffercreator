@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BroadcastHero } from "@/components/broadcast/hero";
 import { SocialProof } from "@/components/broadcast/social-proof";
+import { Guarantee } from "@/components/broadcast/guarantee";
 import { WhyItWorks } from "@/components/broadcast/why-it-works";
 import { Pipeline } from "@/components/broadcast/pipeline";
 import { Effort } from "@/components/broadcast/effort";
 import { Multichannel } from "@/components/broadcast/multichannel";
 import { Samples } from "@/components/broadcast/samples";
+import { Compare } from "@/components/broadcast/compare";
 import { Pricing } from "@/components/broadcast/pricing";
 import { FAQ } from "@/components/broadcast/faq";
 import { CTA } from "@/components/broadcast/cta";
@@ -58,11 +60,13 @@ export default async function LeadPitchPage({
       <PersonalSection lead={lead} />
 
       <SocialProof />
-      <WhyItWorks />
+      <Guarantee />
       <Effort />
       <Pipeline />
       <Multichannel />
+      <WhyItWorks />
       <Samples highlightSlug={lead.slug} />
+      <Compare />
       <Pricing leadCta={mailto} />
       <FAQ />
       <CTA

@@ -13,9 +13,13 @@ export function CTA({
     <section className="relative py-32 px-5 border-t border-white/5 overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(232,178,74,0.12),transparent_60%)]" />
       <div className="relative max-w-4xl mx-auto text-center">
-        <div className="text-[11px] uppercase tracking-[0.22em] text-[#e8b24a] mb-6">
-          Last call
+        <div className="inline-flex items-center gap-2 rounded-full border border-[#e8b24a]/30 bg-[#e8b24a]/[0.08] px-4 py-1.5 backdrop-blur mb-8">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#e8b24a] animate-pulse" />
+          <span className="text-[11px] uppercase tracking-[0.22em] text-[#e8b24a]">
+            5 pilots per month · 3 already claimed
+          </span>
         </div>
+
         <h2 className="font-[family-name:var(--font-clash-display)] text-4xl sm:text-5xl md:text-7xl font-semibold text-white leading-[1.02]">
           {headline}
         </h2>
@@ -54,7 +58,11 @@ export function CTA({
           </span>
           <span className="flex items-center gap-2">
             <span className="h-1 w-1 rounded-full bg-[#e8b24a]" />
-            7 days
+            Live in 7 days
+          </span>
+          <span className="flex items-center gap-2">
+            <span className="h-1 w-1 rounded-full bg-[#e8b24a]" />
+            Cancel in one message
           </span>
         </div>
 

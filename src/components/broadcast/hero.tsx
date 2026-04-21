@@ -21,10 +21,10 @@ export function BroadcastHero({ eyebrow, leadBadge, pilotCta }: HeroProps) {
 
       <div className="relative z-10 max-w-5xl w-full text-center">
         <div className="mb-8 flex flex-col items-center gap-3">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 backdrop-blur">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#e8b24a]/30 bg-[#e8b24a]/[0.08] px-4 py-1.5 backdrop-blur">
             <span className="h-1.5 w-1.5 rounded-full bg-[#e8b24a] animate-pulse" />
-            <span className="text-[11px] uppercase tracking-[0.22em] text-white/70">
-              {eyebrow ?? "Founder Podcast Engine · Free Pilot"}
+            <span className="text-[11px] uppercase tracking-[0.22em] text-[#e8b24a]">
+              {eyebrow ?? "5 pilot slots open this month"}
             </span>
           </div>
 
@@ -38,16 +38,18 @@ export function BroadcastHero({ eyebrow, leadBadge, pilotCta }: HeroProps) {
         </div>
 
         <h1 className="font-[family-name:var(--font-clash-display)] font-bold text-white leading-[0.95] text-5xl sm:text-6xl md:text-7xl lg:text-[104px] tracking-tight">
-          Your voice.
+          5 minutes in.
           <br />
-          <span className="text-[#e8b24a]">Every day.</span>
+          <span className="text-[#e8b24a]">20 assets out.</span>
           <br />
-          Without you.
+          Every week.
         </h1>
 
         <p className="mt-8 max-w-xl mx-auto text-base sm:text-lg text-white/75 leading-relaxed">
-          First episode <span className="text-white font-medium">on us</span>. Live in 7 days. Keep it running for{" "}
-          <span className="text-white font-medium">$997/mo</span> — or don&apos;t. Your call.
+          Your cloned voice becomes a daily podcast on Spotify, Apple, YouTube
+          and X. <span className="text-white font-medium">$997/mo</span> — one-fifth of
+          ContentGhost, twenty-times the output.{" "}
+          <span className="text-white font-medium">First episode free.</span>
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.22em] text-white/60">
@@ -61,7 +63,11 @@ export function BroadcastHero({ eyebrow, leadBadge, pilotCta }: HeroProps) {
           </span>
           <span className="flex items-center gap-2">
             <span className="h-1 w-1 rounded-full bg-[#e8b24a]" />
-            Your voice
+            Your real voice
+          </span>
+          <span className="flex items-center gap-2">
+            <span className="h-1 w-1 rounded-full bg-[#e8b24a]" />
+            Slop-proof
           </span>
         </div>
 
@@ -74,10 +80,10 @@ export function BroadcastHero({ eyebrow, leadBadge, pilotCta }: HeroProps) {
             <span className="ml-2 transition group-hover:translate-x-1">→</span>
           </Link>
           <Link
-            href="#how"
+            href="#compare"
             className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/[0.02] px-8 py-4 text-sm font-medium text-white/90 backdrop-blur transition hover:bg-white/[0.06]"
           >
-            See 60-sec explainer
+            Compare to ContentGhost
           </Link>
         </div>
 
