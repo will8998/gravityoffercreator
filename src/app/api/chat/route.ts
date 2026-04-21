@@ -3,13 +3,13 @@ import { SYSTEM_PROMPT } from '@/lib/ai/system-prompt';
 import { getAIProvider } from '@/lib/ai/provider';
 
 export async function POST(request: Request) {
-  const { messages, provider = 'openai', apiKey, builderStep } = await request.json();
+  const { messages, provider = 'openai', apiKey, authToken, builderStep } = await request.json();
 
-  if (!apiKey) {
-    return new Response('API key required', { status: 401 });
+  if (!apiKey && !authToken) {
+    return new Response('API key or auth token required', { status: 401 });
   }
 
-  const model = getAIProvider(provider, apiKey);
+  const model = getAIProvider(provider, { apiKey, authToken });
 
   let systemPrompt = SYSTEM_PROMPT;
   if (builderStep) {

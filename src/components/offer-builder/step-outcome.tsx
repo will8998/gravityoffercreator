@@ -4,7 +4,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Sparkles, ArrowRight } from "lucide-react";
-import { OfferData } from "@/app/builder/page";
+import { OfferData } from "@/app/(dashboard)/builder/page";
 
 interface StepOutcomeProps {
   data: OfferData;

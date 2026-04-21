@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Sparkles, MessageCircle, X, Lightbulb, Map, Wrench } from "lucide-react";
-import { OfferData } from "@/app/builder/page";
+import { OfferData } from "@/app/(dashboard)/builder/page";
 import { useChat } from "@ai-sdk/react";
 import { useSettings } from "@/hooks/use-settings";
 

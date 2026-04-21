@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Copy, Check, FileText, Sparkles, Loader2 } from "lucide-react";
-import { OfferData } from "@/app/builder/page";
+import { OfferData } from "@/app/(dashboard)/builder/page";
 import { useSettings } from "@/hooks/use-settings";
 import { toast } from "sonner";
 

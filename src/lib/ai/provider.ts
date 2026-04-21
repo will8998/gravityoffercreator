@@ -1,11 +1,20 @@
 import { createOpenAI } from '@ai-sdk/openai';
 import { createAnthropic } from '@ai-sdk/anthropic';
 
-export function getAIProvider(provider: string, apiKey: string) {
+interface ProviderOptions {
+  apiKey?: string;
+  authToken?: string;
+}
+
+export function getAIProvider(provider: string, options: ProviderOptions) {
   if (provider === 'anthropic') {
-    const anthropic = createAnthropic({ apiKey });
+    if (options.authToken) {
+      const anthropic = createAnthropic({ authToken: options.authToken });
+      return anthropic('claude-sonnet-4-20250514');
+    }
+    const anthropic = createAnthropic({ apiKey: options.apiKey });
     return anthropic('claude-sonnet-4-20250514');
   }
-  const openai = createOpenAI({ apiKey });
+  const openai = createOpenAI({ apiKey: options.apiKey });
   return openai('gpt-4o');
 }

@@ -7,7 +7,7 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Check, ChevronLeft, ChevronRight, Save } from "lucide-react";
-import { OfferData } from "@/app/builder/page";
+import { OfferData } from "@/app/(dashboard)/builder/page";
 import { StepIdealClient } from "./step-ideal-client";
 import { StepSolutions } from "./step-solutions";
 import { StepThorn } from "./step-thorn";

@@ -118,7 +118,7 @@ function buildOfferSummary(offer: Offer): string {
 export default function LaunchPage() {
   const params = useParams();
   const router = useRouter();
-  const { settings, getActiveKey, isLoaded } = useSettings();
+  const { getActiveKey, getAuthToken, getEffectiveProvider, hasValidAuth, isLoaded } = useSettings();
   const [offer, setOffer] = useState<Offer | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("document");
@@ -180,9 +180,8 @@ export default function LaunchPage() {
   const generateContent = async (type: "document" | "dm" | "email") => {
     if (!offer) return;
 
-    const activeKey = getActiveKey();
-    if (!activeKey) {
-      toast.error("Please configure your API key in settings");
+    if (!hasValidAuth()) {
+      toast.error("Please configure your API key or enable Claude Max in settings");
       return;
     }
 
@@ -210,8 +209,9 @@ export default function LaunchPage() {
         },
         body: JSON.stringify({
           prompt,
-          provider: settings.provider,
-          apiKey: activeKey,
+          provider: getEffectiveProvider(),
+          apiKey: getActiveKey() || undefined,
+          authToken: getAuthToken() || undefined,
         }),
       });
 
@@ -339,7 +339,7 @@ export default function LaunchPage() {
   }
 
   // Check if settings are configured
-  if (isLoaded && !getActiveKey()) {
+  if (isLoaded && !hasValidAuth()) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-amber-50/20 via-white to-orange-50/20">
         <div className="p-8">

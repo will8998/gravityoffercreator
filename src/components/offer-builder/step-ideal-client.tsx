@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import { Sparkles, MessageCircle, X } from "lucide-react";
-import { OfferData } from "@/app/builder/page";
+import { OfferData } from "@/app/(dashboard)/builder/page";
 import { useChat } from "@ai-sdk/react";
 import { useSettings } from "@/hooks/use-settings";
 

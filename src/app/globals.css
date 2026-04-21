@@ -91,10 +91,4 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
-    background-image: 
-      radial-gradient(circle at 1px 1px, rgba(28, 25, 23, 0.02) 1px, transparent 0);
-    background-size: 20px 20px;
-  }
 }

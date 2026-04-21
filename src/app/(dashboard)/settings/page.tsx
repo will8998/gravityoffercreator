@@ -18,7 +18,7 @@ function maskKey(key: string): string {
 }
 
 export default function SettingsPage() {
-  const { settings, saveSettings, isLoaded } = useSettings();
+  const { settings, saveSettings, isLoaded, claudeMaxAvailable, checkClaudeMax, getAuthToken } = useSettings();
   const [openaiKey, setOpenaiKey] = useState("");
   const [anthropicKey, setAnthropicKey] = useState("");
   const [showOpenai, setShowOpenai] = useState(false);
@@ -41,13 +41,14 @@ export default function SettingsPage() {
   };
 
   const handleTestConnection = async () => {
+    const authToken = getAuthToken();
     const activeKey =
       settings.provider === "anthropic"
         ? settings.anthropicKey
         : settings.openaiKey;
 
-    if (!activeKey) {
-      toast.error("No API key configured for the selected provider");
+    if (!activeKey && !authToken) {
+      toast.error("No API key or Claude Max auth configured");
       return;
     }
 
@@ -55,13 +56,15 @@ export default function SettingsPage() {
     setTestResult(null);
 
     try {
+      const provider = settings.useClaudeMax ? "anthropic" : settings.provider;
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           messages: [{ role: "user", content: "Say hello in 5 words or less." }],
-          provider: settings.provider,
-          apiKey: activeKey,
+          provider,
+          apiKey: settings.useClaudeMax ? undefined : activeKey,
+          authToken: settings.useClaudeMax ? authToken : undefined,
         }),
       });
 
@@ -70,11 +73,11 @@ export default function SettingsPage() {
         toast.success("Connection successful!");
       } else {
         setTestResult("error");
-        toast.error("Connection failed. Check your API key.");
+        toast.error("Connection failed. Check your configuration.");
       }
     } catch {
       setTestResult("error");
-      toast.error("Connection failed. Check your API key.");
+      toast.error("Connection failed. Check your configuration.");
     } finally {
       setTesting(false);
     }
@@ -105,7 +108,68 @@ export default function SettingsPage() {
         </header>
 
         <div className="space-y-6">
-          <Card>
+          {claudeMaxAvailable && (
+            <Card className={settings.useClaudeMax ? "border-2 border-emerald-400 bg-emerald-50/30" : ""}>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-lg">
+                  <Shield className="h-5 w-5 text-emerald-600" />
+                  Claude Max
+                </CardTitle>
+                <CardDescription>
+                  Use your Claude Max subscription via OpenCode — no API key needed
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <Badge className="bg-emerald-100 text-emerald-800 border-emerald-200">
+                      <Check className="h-3 w-3 mr-1" />
+                      Detected
+                    </Badge>
+                    <span className="text-sm text-muted-foreground">
+                      OpenCode auth token found
+                    </span>
+                  </div>
+                  <Button
+                    onClick={() => {
+                      const next = !settings.useClaudeMax;
+                      saveSettings({ useClaudeMax: next });
+                      if (next) {
+                        saveSettings({ useClaudeMax: true, provider: "anthropic" });
+                        toast.success("Claude Max enabled — using your subscription");
+                      } else {
+                        toast.success("Claude Max disabled — using API keys");
+                      }
+                    }}
+                    variant={settings.useClaudeMax ? "default" : "outline"}
+                    className={settings.useClaudeMax ? "bg-emerald-600 hover:bg-emerald-700" : ""}
+                  >
+                    {settings.useClaudeMax ? "Enabled" : "Enable"}
+                  </Button>
+                </div>
+                {settings.useClaudeMax && (
+                  <div className="mt-4 flex items-center gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={async () => {
+                        const ok = await checkClaudeMax();
+                        if (ok) toast.success("Token refreshed");
+                        else toast.error("Could not refresh token");
+                      }}
+                    >
+                      Refresh Token
+                    </Button>
+                    <span className="text-xs text-muted-foreground">
+                      If your token expires, refresh it here
+                    </span>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          )}
+
+          <Card className={settings.useClaudeMax ? "opacity-50 pointer-events-none" : ""}>
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-lg">
                 <Shield className="h-5 w-5 text-accent" />
@@ -149,7 +213,7 @@ export default function SettingsPage() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className={settings.useClaudeMax ? "opacity-50 pointer-events-none" : ""}>
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-lg">
                 <Key className="h-5 w-5 text-accent" />

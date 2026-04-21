@@ -22,13 +22,14 @@ export function ChatInterface() {
   const [input, setInput] = useState("");
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const { settings, getActiveKey, isLoaded } = useSettings();
+  const { getActiveKey, getAuthToken, getEffectiveProvider, hasValidAuth, isLoaded } = useSettings();
 
   const { messages, sendMessage, status, stop } = useChat({
     transport: new DefaultChatTransport({
       body: {
-        provider: settings?.provider,
-        apiKey: getActiveKey(),
+        provider: getEffectiveProvider(),
+        apiKey: getActiveKey() || undefined,
+        authToken: getAuthToken() || undefined,
       },
     }),
   });
@@ -69,7 +70,7 @@ export function ChatInterface() {
     sendMessage({ role: "user", parts: [{ type: "text", text: prompt }] });
   };
 
-  if (isLoaded && !getActiveKey()) {
+  if (isLoaded && !hasValidAuth()) {
     return (
       <div className="flex items-center justify-center h-full">
         <Card className="max-w-md mx-auto border-2 border-dashed border-border">

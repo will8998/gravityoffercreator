@@ -12,6 +12,9 @@
     "@ai-sdk/anthropic": "^3.0.43",
     "@ai-sdk/openai": "^3.0.28",
     "@ai-sdk/react": "^3.0.87",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.0",
+    "@types/three": "^0.184.0",
     "ai": "^6.0.85",
     "better-sqlite3": "^11.10.0",
     "class-variance-authority": "^0.7.1",
@@ -26,7 +29,8 @@
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
     "sonner": "^2.0.7",
-    "tailwind-merge": "^3.4.0"
+    "tailwind-merge": "^3.4.0",
+    "three": "^0.184.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
