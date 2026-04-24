@@ -1,26 +1,26 @@
 const steps = [
   {
     num: "01",
-    label: "Voice note",
-    title: "Send. From anywhere.",
-    desc: "Phone voice memo. Airport, gym, between calls. 30 min / week total. No scripts.",
+    label: "Voice sample",
+    title: "One-time, 10 minutes.",
+    desc: "Phone memo, quiet room. That's the only audio you ever record. We source the rest from your past content.",
   },
   {
     num: "02",
     label: "Clone + edit",
     title: "Studio-grade, in your voice.",
-    desc: "Your consent-based voice clone + human editors script 5 episodes from one session.",
+    desc: "Your consent-based voice clone + human editors script 3 episodes a week from your past posts and the week's news.",
   },
   {
     num: "03",
     label: "Publish",
-    title: "Daily. Six channels.",
-    desc: "Spotify, Apple, YouTube, X, LinkedIn, TikTok. You don't touch a thing.",
+    title: "MWF. Five channels.",
+    desc: "Spotify, Apple, YouTube, X, LinkedIn, Telegram. You don't touch a thing.",
   },
   {
     num: "04",
     label: "Repurpose",
-    title: "20 assets / week.",
+    title: "~15 assets / week.",
     desc: "Each episode → thread + Short + LinkedIn post. Every platform, every cadence.",
   },
 ];
